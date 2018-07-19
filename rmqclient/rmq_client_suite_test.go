@@ -1,4 +1,4 @@
-package lapin_cretin_test
+package rmqclient_test
 
 import (
 	"testing"

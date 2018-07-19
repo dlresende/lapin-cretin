@@ -1,4 +1,4 @@
-package lapin_cretin
+package rmqclient
 
 import (
 	"fmt"

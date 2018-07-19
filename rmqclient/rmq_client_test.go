@@ -1,4 +1,4 @@
-package lapin_cretin_test
+package rmqclient_test
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	. "github.com/dlresende/lapin-cretin"
+	. "github.com/dlresende/lapin-cretin/rmqclient"
 )
 
 var _ = Describe("Channels", func() {

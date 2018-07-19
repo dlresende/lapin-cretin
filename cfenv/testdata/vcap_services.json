@@ -2,14 +2,14 @@
   "p-rabbitmq": [
   {
     "credentials": {
-     "dashboard_url": "https://pivotal-rabbitmq.sys.lemonmeringue.cf-app.com/#/login/93da6eed-447c-44bf-8089-284db322435d/my-secret-password",
+     "dashboard_url": "https://localhost/#/login/93da6eed-447c-44bf-8089-284db322435d/my-secret-password",
      "hostname": "10.0.4.50",
      "hostnames": [
       "10.0.4.50"
      ],
-     "http_api_uri": "https://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@pivotal-rabbitmq.sys.lemonmeringue.cf-app.com/api/",
+     "http_api_uri": "https://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@localhost/api/",
      "http_api_uris": [
-      "https://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@pivotal-rabbitmq.sys.lemonmeringue.cf-app.com/api/"
+      "https://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@localhost/api/"
      ],
      "password": "my-secret-password",
      "protocols": {

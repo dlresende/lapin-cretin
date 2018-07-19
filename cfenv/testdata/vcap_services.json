@@ -1,0 +1,72 @@
+{
+  "p-rabbitmq": [
+  {
+    "credentials": {
+     "dashboard_url": "https://pivotal-rabbitmq.sys.lemonmeringue.cf-app.com/#/login/93da6eed-447c-44bf-8089-284db322435d/my-secret-password",
+     "hostname": "10.0.4.50",
+     "hostnames": [
+      "10.0.4.50"
+     ],
+     "http_api_uri": "https://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@pivotal-rabbitmq.sys.lemonmeringue.cf-app.com/api/",
+     "http_api_uris": [
+      "https://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@pivotal-rabbitmq.sys.lemonmeringue.cf-app.com/api/"
+     ],
+     "password": "my-secret-password",
+     "protocols": {
+      "amqp": {
+       "host": "10.0.4.50",
+       "hosts": [
+        "10.0.4.50"
+       ],
+       "password": "my-secret-password",
+       "port": 5672,
+       "ssl": false,
+       "uri": "amqp://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@10.0.4.50:5672/eb1439d4-3788-401b-bcbf-574f0717c5ed",
+       "uris": [
+        "amqp://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@10.0.4.50:5672/eb1439d4-3788-401b-bcbf-574f0717c5ed"
+       ],
+       "username": "93da6eed-447c-44bf-8089-284db322435d",
+       "vhost": "eb1439d4-3788-401b-bcbf-574f0717c5ed"
+      },
+      "management": {
+       "host": "10.0.4.50",
+       "hosts": [
+        "10.0.4.50"
+       ],
+       "password": "my-secret-password",
+       "path": "/api/",
+       "port": 15672,
+       "ssl": false,
+       "uri": "http://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@10.0.4.50:15672/api/",
+       "uris": [
+        "http://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@10.0.4.50:15672/api/"
+       ],
+       "username": "93da6eed-447c-44bf-8089-284db322435d"
+      }
+     },
+     "ssl": false,
+     "uri": "amqp://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@10.0.4.50/eb1439d4-3788-401b-bcbf-574f0717c5ed",
+     "uris": [
+      "amqp://93da6eed-447c-44bf-8089-284db322435d:my-secret-password@10.0.4.50/eb1439d4-3788-401b-bcbf-574f0717c5ed"
+     ],
+     "username": "93da6eed-447c-44bf-8089-284db322435d",
+     "vhost": "eb1439d4-3788-401b-bcbf-574f0717c5ed"
+    },
+    "label": "p-rabbitmq",
+    "name": "myrabbit",
+    "plan": "standard",
+    "provider": null,
+    "syslog_drain_url": null,
+    "tags": [
+     "rabbitmq",
+     "messaging",
+     "message-queue",
+     "amqp",
+     "stomp",
+     "mqtt",
+     "pivotal"
+    ],
+    "volume_mounts": []
+   }
+  ]
+}

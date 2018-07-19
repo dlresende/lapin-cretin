@@ -1,0 +1,11 @@
+{
+	"ImportPath": "github.com/dlresende/lapin-cretin",
+	"GoVersion": "go1.10",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/streadway/amqp",
+			"Rev": "e5adc2ada8b8efff032bf61173a233d143e9318e"
+		}
+	]
+}

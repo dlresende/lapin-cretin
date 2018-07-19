@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"time"
 
 	. "github.com/dlresende/lapin-cretin/cfenv"
@@ -12,31 +13,48 @@ func main() {
 	url := GetAmqPUri()
 
 	var conn *amqp.Connection
-	for x := 0; x < 390; x++ {
-		conn = OpenConnection(url)
-		defer conn.Close()
-	}
+	conn = OpenConnection(url)
+	defer conn.Close()
 
 	var ch *amqp.Channel
-	for x := 0; x < 55000; x++ {
-		ch = CreateChannel(conn)
-		defer ch.Close()
-	}
+	ch = CreateChannel(conn)
+	defer ch.Close()
 
 	q := DeclareNonDurableNonAutoDeletedQueue(ch, "test")
-	start := time.Now()
 
-	go func() {
-		for {
-			Publish(ch, q.Name, start.Local().String())
-			time.Sleep(2 * time.Second)
-		}
-	}()
+	forever := make(chan bool)
 
-	go func() {
-		for {
-			ConsumeAll(ch, q.Name, "testConsumer")
-			time.Sleep(2 * time.Second)
+	go publishAMessageEveryNSec(ch, q.Name, 1)
+	go consumeAllEveryNSec(ch, q.Name, 10)
+
+	go func(nbOfConnections, nbOfChannelsPerConnection int) {
+		for x := 0; x < nbOfConnections; x++ {
+			var connGhost *amqp.Connection
+			connGhost = OpenConnection(url)
+			defer connGhost.Close()
+
+			for x := 0; x < nbOfChannelsPerConnection; x++ {
+				var chGhost *amqp.Channel
+				chGhost = CreateChannel(connGhost)
+				defer chGhost.Close()
+			}
 		}
-	}()
+	}(150, 500)
+
+	log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
+	<-forever
+}
+
+func publishAMessageEveryNSec(ch *amqp.Channel, queue string, interval time.Duration) {
+	for {
+		Publish(ch, queue, time.Now().Local().String())
+		time.Sleep(interval * time.Second)
+	}
+}
+
+func consumeAllEveryNSec(ch *amqp.Channel, queue string, interval time.Duration) {
+	for {
+		ConsumeAll(ch, queue, "testConsumer")
+		time.Sleep(interval * time.Second)
+	}
 }

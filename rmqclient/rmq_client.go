@@ -43,6 +43,7 @@ func Publish(ch *amqp.Channel, routingKey, message string) {
 			Body:        []byte(message),
 		})
 	failOnError(err, "Failed to publish a message")
+	log.Printf("Message published: %s", message)
 }
 
 func ConsumeAll(ch *amqp.Channel, queue, consumer string) []string {
@@ -61,7 +62,7 @@ func ConsumeAll(ch *amqp.Channel, queue, consumer string) []string {
 	go func() {
 		for d := range msgs {
 			contents = append(contents, string(d.Body))
-			log.Printf("Received a message: %s", d.Body)
+			log.Printf("Message received: %s", d.Body)
 		}
 	}()
 

@@ -1,0 +1,9 @@
+---
+applications:
+  - name: lapin-cretin
+    command: lapin-cretin
+    instances: 1
+    buildpack: https://github.com/cloudfoundry/go-buildpack
+    health-check-type: process
+    env:
+      GOPACKAGENAME: go

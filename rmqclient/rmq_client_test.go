@@ -13,7 +13,7 @@ import (
 
 var _ = Describe("Channels", func() {
 
-	It("should send a message with time every second", func() {
+	It("should publish and consume a message", func() {
 		url := "amqp://guest:guest@localhost:5672"
 		conn := OpenConnection(url)
 		defer conn.Close()
@@ -21,6 +21,7 @@ var _ = Describe("Channels", func() {
 		defer ch.Close()
 		q := DeclareNonDurableNonAutoDeletedQueue(ch, "test")
 		start := time.Now()
+		ConsumeAll(ch, q.Name, "testConsumer")
 
 		Publish(ch, q.Name, start.Local().String())
 		msgs := ConsumeAll(ch, q.Name, "testConsumer")

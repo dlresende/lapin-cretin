@@ -22,26 +22,34 @@ func main() {
 
 	q := DeclareNonDurableNonAutoDeletedQueue(ch, "test")
 
-	forever := make(chan bool)
-
 	go publishAMessageEveryNSec(ch, q.Name, 1)
 	go consumeAllEveryNSec(ch, q.Name, 10)
 
-	go func(nbOfConnections, nbOfChannelsPerConnection int) {
-		for x := 0; x < nbOfConnections; x++ {
-			var connGhost *amqp.Connection
-			connGhost = OpenConnection(url)
-			defer connGhost.Close()
+	forever := make(chan bool)
 
-			for x := 0; x < nbOfChannelsPerConnection; x++ {
-				var chGhost *amqp.Channel
-				chGhost = CreateChannel(connGhost)
-				defer chGhost.Close()
-			}
-		}
-	}(150, 500)
+	nbOfConnections := 150
+	nbOfChannelsPerConnection := 500
+
+	for x := 0; x < nbOfConnections; x++ {
+		go createNChannels(url, nbOfChannelsPerConnection, forever)
+	}
 
 	log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
+	<-forever
+}
+
+func createNChannels(url string, nbOfChannelsPerConnection int, forever chan bool) {
+
+	var connGhost *amqp.Connection
+	connGhost = OpenConnection(url)
+	defer connGhost.Close()
+
+	for x := 0; x < nbOfChannelsPerConnection; x++ {
+		var chGhost *amqp.Channel
+		chGhost = CreateChannel(connGhost)
+		defer chGhost.Close()
+	}
+
 	<-forever
 }
 

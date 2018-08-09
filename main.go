@@ -27,8 +27,8 @@ func main() {
 
 	forever := make(chan bool)
 
-	nbOfConnections := 150
-	nbOfChannelsPerConnection := 500
+	nbOfConnections := 100
+	nbOfChannelsPerConnection := 900
 
 	for x := 0; x < nbOfConnections; x++ {
 		go createNChannels(url, nbOfChannelsPerConnection, forever)

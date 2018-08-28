@@ -20,10 +20,10 @@ func main() {
 	ch = CreateChannel(conn)
 	defer ch.Close()
 
-	q := DeclareNonDurableNonAutoDeletedQueue(ch, "test")
+	// q := DeclareNonDurableNonAutoDeletedQueue(ch, "test")
 
-	go publishAMessageEveryNSec(ch, q.Name, 1)
-	go consumeAllEveryNSec(ch, q.Name, 10)
+	// go publishAMessageEveryNSec(ch, q.Name, 1)
+	// go consumeAllEveryNSec(ch, q.Name, 10)
 
 	forever := make(chan bool)
 

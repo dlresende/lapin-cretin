@@ -31,6 +31,8 @@ func main() {
 	nbOfChannelsPerConnection := 900
 
 	for x := 0; x < nbOfConnections; x++ {
+		time.Sleep(1 * time.Second)
+
 		go createNChannels(url, nbOfChannelsPerConnection, forever)
 	}
 

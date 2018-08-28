@@ -28,7 +28,7 @@ func main() {
 	forever := make(chan bool)
 
 	nbOfConnections := 100
-	nbOfChannelsPerConnection := 900
+	nbOfChannelsPerConnection := 2000
 
 	for x := 0; x < nbOfConnections; x++ {
 		time.Sleep(1 * time.Second)

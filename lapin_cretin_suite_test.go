@@ -1,13 +1,13 @@
-package rmqclient_test
+package main_test
 
 import (
-	"testing"
-
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+
+	"testing"
 )
 
 func TestLapinCretin(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "RabbitMQ Client Suite")
+	RunSpecs(t, "LapinCretin Suite")
 }

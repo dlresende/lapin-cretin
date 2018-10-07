@@ -1,7 +1,6 @@
 package rmqclient_test
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -33,6 +32,5 @@ var _ = Describe("Channels", func() {
 func failOnError(err error, msg string) {
 	if err != nil {
 		log.Fatalf("%s: %s", msg, err)
-		panic(fmt.Sprintf("%s: %s", msg, err))
 	}
 }

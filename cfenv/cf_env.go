@@ -2,7 +2,6 @@ package cfenv
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 )
@@ -37,6 +36,5 @@ func GetAmqPUri() string {
 func failOnError(err error, msg string) {
 	if err != nil {
 		log.Fatalf("%s: %s", msg, err)
-		panic(fmt.Sprintf("%s: %s", msg, err))
 	}
 }

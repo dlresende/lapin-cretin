@@ -9,5 +9,5 @@ import (
 
 func TestCfenv(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Cfenv Suite")
+	RunSpecs(t, "CF env Suite")
 }

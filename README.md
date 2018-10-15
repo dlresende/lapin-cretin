@@ -6,6 +6,7 @@ In order to run this the app locally, make sure you have a RabbitMQ running some
 
 ```
 $ export VCAP_SERVICES='{ "p-rabbitmq": [ { "credentials": { "protocols": { "amqp": { "uri": "amqp://guest:guest@localhost:5672" } } } } ] }'
+$ dep ensure
 $ go install
 $ lapin-cretin <# of connections> <# of channels per connection>
 ```

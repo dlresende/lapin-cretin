@@ -6,6 +6,7 @@ applications:
     buildpack: https://github.com/cloudfoundry/go-buildpack
     health-check-type: process
     env:
-      GOPACKAGENAME: go
+      GOVERSION: go1.11
+      GOPACKAGENAME: lapin-cretin
       NB_OF_CONNECTIONS: 100
       NB_OF_CHANNELS_PER_CONNECTIONS: 2000
